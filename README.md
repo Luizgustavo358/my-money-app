@@ -37,6 +37,12 @@ npm run dev
 
 ---
 
+## Estrutura da Aplicação
+
+![Estrutura](img/estrutura.png)
+
+---
+
 ## Curso da Udemy:
 
 [Curso React + Redux: Fundamentos e 2 Apps do Absoluto ZERO!](https://www.udemy.com/course/react-redux-pt/)
