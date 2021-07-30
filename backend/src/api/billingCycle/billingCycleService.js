@@ -9,16 +9,6 @@ BillingCycle.updateOptions({
 
 BillingCycle.after('post', errorHandler).after('put', errorHandler)
 
-// BillingCycle.route('get', (req, res, next) => {
-//     BillingCycle.find({}, (err, docs) => {
-//         if(!err) {
-//             res.json(docs)
-//         } else {
-//             res.status(500).json({ errors: [err] })
-//         }
-//     })
-// })
-
 BillingCycle.route('count', (req, res, next) => {
     BillingCycle.count((error, value) => {
         if(error) {
