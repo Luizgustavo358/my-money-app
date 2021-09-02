@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -9,7 +9,7 @@ import CreditList from './creditList'
 
 class BillingCycleForm extends Component {
     render() {
-        const { handleSubmit, readOnly } = this.props
+        const { handleSubmit, readOnly, credits } = this.props
 
         return (
             <form role='form' onSubmit={handleSubmit}>
@@ -42,6 +42,7 @@ class BillingCycleForm extends Component {
                     />
                     <CreditList 
                         cols='12 6' 
+                        list={credits}
                         readOnly={readOnly}
                     />
                 </div>
@@ -69,5 +70,7 @@ BillingCycleForm = reduxForm({
     destroyOnUnmount: false 
 })(BillingCycleForm)
 
+const selector = formValueSelector('billingCycleForm')
+const mapStateToProps = state => ({ credits: selector(state, 'credits') })
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
-export default connect(null, mapDispatchToProps)(BillingCycleForm)
+export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)
