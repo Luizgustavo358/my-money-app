@@ -51,4 +51,4 @@ Ministrado por:
 - [@leonardomleitao](https://github.com/leonardomleitao)
 - [@cod3rcursos](https://github.com/cod3rcursos)
 
-Repositório do Projeto: [link](https://github.com/cod3rcursos/)
+Repositório do Projeto: [link](https://github.com/cod3rcursos/curso-react-redux)

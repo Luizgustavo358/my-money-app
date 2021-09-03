@@ -3,13 +3,25 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import LabelAndInput from '../common/form/labelAndInput'
 import { init } from './billingCycleActions'
+import LabelAndInput from '../common/form/labelAndInput'
 import ItemList from './itemList'
+import Summary from './summary'
 
 class BillingCycleForm extends Component {
+
+    calculateSummary() {
+        const sum = (t, v) => t + v
+
+        return {
+            sumOfCredits: this.props.credits.map(c => +c.value || 0).reduce(sum),
+            sumOfDebts: this.props.debts.map(d => +d.value || 0).reduce(sum)
+        }
+    }
+
     render() {
         const { handleSubmit, readOnly, credits, debts } = this.props
+        const { sumOfCredits, sumOfDebts } = this.calculateSummary()
 
         return (
             <form role='form' onSubmit={handleSubmit}>
@@ -40,6 +52,7 @@ class BillingCycleForm extends Component {
                         cols='12 4'
                         placeholder='Informe o ano' 
                     />
+                    <Summary credit={sumOfCredits} debt={sumOfDebts} />
                     <ItemList 
                         cols='12 6' 
                         list={credits}
@@ -56,6 +69,7 @@ class BillingCycleForm extends Component {
                         showStatus={true}
                     />
                 </div>
+                
                 <div className="box-footer">
                     <button 
                         type="submit" 
