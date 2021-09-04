@@ -75,7 +75,7 @@ class Auth extends Component {
                     </form>
                     <br />
                     <a onClick={() => this.changeMode()}>
-                        { loginMode ? 'Novo usuário ? Registrar aqui!' : 'Ja é cadastrado? Entrar aqui!'}
+                        { loginMode ? 'Novo usuário? Registre-se aqui!' : 'Já é cadastrado? Entre aqui!'}
                     </a>
                 </div>
                 <Messages />
